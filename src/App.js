@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import { storeDB } from './firebaseConfig'
+
 function App() {
+
+  const ref = storeDB.collection('learners').doc('Learner One')
+  const learner = 'Person!'
+  
+  const first = ref.get().then((doc) => {
+    if(doc.exists){
+      return doc.data().Email
+    }
+    else return 'no such doc!'
+  })
+
+  const email = first.toString()
+
+  console.log(email)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content">
+        <h1>HELLOOO</h1>
+        <p>Hello to you, { learner }</p>
+      </div>
     </div>
   );
 }
