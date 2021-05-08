@@ -18,13 +18,18 @@ function App() {
             <Route exact path="/">
               {isPending && <h1 className="text-2xl">Loading...</h1>}
               {error && <h1 className="text-2xl">error</h1>}
-              {data && <Home title="Hello Learners!" learnerList={data} />}
+              {data && (
+                <Home
+                  title="Learners List: Average Score = "
+                  learnerList={data}
+                />
+              )}
             </Route>
             <Route path="/addnew">
               <AddUser />
             </Route>
-            <Route path="/profile">
-              {data && <Profile details={data[0]} />}
+            <Route path="/profile/:name">
+              {data && <Profile details={data} />}
             </Route>
           </Switch>
         </div>

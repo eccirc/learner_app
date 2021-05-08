@@ -1,11 +1,40 @@
-// import PropTypes from "prop-types";
+import { useState } from "react";
 
 const AddUser = () => {
+  const [First, setFirst] = useState("");
+  const [Last, setLast] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Score, setScore] = useState(0);
+
   const inputs = [
-    { label: "firstName", placeholder: "Enter First Name", type: "text" },
-    { label: "lastName ", placeholder: "Enter Last Name", type: "text" },
-    { label: "email", placeholder: "Enter e-mail address", type: "email" },
-    { label: "initScore", placeholder: "Initial score 0-10", type: "number" },
+    {
+      label: "firstName",
+      placeholder: "First Name",
+      type: "text",
+      value: First,
+      func: setFirst,
+    },
+    {
+      label: "lastName ",
+      placeholder: "Last Name",
+      type: "text",
+      value: Last,
+      func: setLast,
+    },
+    {
+      label: "email",
+      placeholder: "E-mail address",
+      type: "email",
+      value: Email,
+      func: setEmail,
+    },
+    {
+      label: "Current score",
+      placeholder: "Initial score 0-10",
+      type: "number",
+      value: Score,
+      func: setScore,
+    },
   ];
 
   return (
@@ -18,7 +47,7 @@ const AddUser = () => {
           Submit New Learner
         </button>
       </div>
-      <section className="inline-flex">
+      <form className="inline-flex">
         {inputs.map((input, index) => (
           <div className="inline" key={index}>
             <label htmlFor="firstName" className="block m-2">
@@ -31,10 +60,12 @@ const AddUser = () => {
               name={input.label}
               min="0"
               max="10"
+              value={input.value}
+              onChange={(e) => input.func(e.target.value)}
             />
           </div>
         ))}
-      </section>
+      </form>
     </div>
   );
 };
