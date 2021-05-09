@@ -58,6 +58,9 @@ function App() {
           </Switch>
         </div>
       </div>
+      <aside className="text-base text-gray-500 mt-16 ml-8">
+        David Gareth Williams 2021
+      </aside>
     </Router>
   );
 }

@@ -86,7 +86,7 @@ const Profile = ({ details }) => {
         </button>
         {!editProfile && (
           <div>
-            <h1 className="text-2xl block font-bold">
+            <h1 className="text-2xl block font-bold text-gray-600">
               {profile[0]["First Name"] + " " + profile[0]["Last Name"]}
             </h1>
             <br />

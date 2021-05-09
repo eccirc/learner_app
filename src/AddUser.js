@@ -81,7 +81,7 @@ const AddUser = () => {
           Submit New Learner
         </button>
       </div>
-      <form className="inline-flex">
+      <form className="inline-flex flex-wrap">
         {inputs.map((input, index) => (
           <div className="inline" key={index}>
             <label htmlFor="firstName" className="block m-2">

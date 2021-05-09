@@ -37,7 +37,7 @@ const Navbar = ({ isAdmin }) => {
   return (
     <nav className="p-10 flex flex-wrap bg-blue-400 rounded-lg m-4 items-center">
       <div>
-        <h1 className="text-3xl font-bold">Learners Page</h1>
+        <h1 className="text-3xl font-bold text-gray-600">Learners Page</h1>
         {!isAdmin && (
           <button
             onClick={() => setLogin(!Login)}
@@ -56,7 +56,10 @@ const Navbar = ({ isAdmin }) => {
         )}
       </div>
 
-      <Link to="/" className="ml-8 mr-4 ">
+      <Link
+        to="/"
+        className="ml-8 mr-4 text-pink-400 hover:underline font-bold text-lg "
+      >
         Home
       </Link>
       {isAdmin && (

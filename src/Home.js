@@ -21,7 +21,9 @@ const Home = ({ title, learnerList, isAdmin }) => {
             isAdmin && (
               <Link to={`/profile/${list.id}`} key={index}>
                 <div className="learners-list justify-center border-4 m-1 flex-col items-center">
-                  <h2>{list["First Name"] + " " + list["Last Name"]}</h2>
+                  <h2 className="text-gray-600">
+                    {list["First Name"] + " " + list["Last Name"]}
+                  </h2>
                   <p className="text-white">view details</p>
                 </div>
               </Link>
@@ -33,7 +35,9 @@ const Home = ({ title, learnerList, isAdmin }) => {
               key={index}
               className="learners-list justify-center border-4 m-1 flex-col items-center"
             >
-              <h2>{list["First Name"] + " " + list["Last Name"]}</h2>
+              <h2 className="text-gray-600">
+                {list["First Name"] + " " + list["Last Name"]}
+              </h2>
               <p className="text-white">login to view details</p>
             </div>
           ))}
