@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Home = ({ title, learnerList }) => {
+const Home = ({ title, learnerList, isAdmin }) => {
   const average = () => {
     let count = 0;
     learnerList.forEach((element) => {
@@ -16,14 +16,27 @@ const Home = ({ title, learnerList }) => {
         {title + " " + average()}{" "}
       </h1>
       <div className="flex flex-wrap w-full">
-        {learnerList.map((list, index) => (
-          <Link to={`/profile/${list["First Name"]}`} key={index}>
-            <div className="learners-list justify-center border-4 m-1 flex-col items-center">
+        {learnerList.map(
+          (list, index) =>
+            isAdmin && (
+              <Link to={`/profile/${list["First Name"]}`} key={index}>
+                <div className="learners-list justify-center border-4 m-1 flex-col items-center">
+                  <h2>{list["First Name"] + " " + list["Last Name"]}</h2>
+                  <p className="text-white">view details</p>
+                </div>
+              </Link>
+            )
+        )}
+        {!isAdmin &&
+          learnerList.map((list, index) => (
+            <div
+              key={index}
+              className="learners-list justify-center border-4 m-1 flex-col items-center"
+            >
               <h2>{list["First Name"] + " " + list["Last Name"]}</h2>
-              <p className="text-white">view details</p>
+              <p className="text-white">login to view details</p>
             </div>
-          </Link>
-        ))}
+          ))}
       </div>
     </div>
   );
@@ -32,6 +45,7 @@ const Home = ({ title, learnerList }) => {
 Home.propTypes = {
   title: PropTypes.string,
   learnerList: PropTypes.array,
+  isAdmin: PropTypes.bool,
 };
 
 export default Home;
