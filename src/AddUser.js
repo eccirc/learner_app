@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { storeDB } from "./firebaseConfig";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
-const AddUser = ({ listLength }) => {
+const AddUser = () => {
   const [First, setFirst] = useState("");
   const [Last, setLast] = useState("");
   const [Email, setEmail] = useState("");
@@ -12,14 +11,18 @@ const AddUser = ({ listLength }) => {
   const history = useHistory();
 
   const addUser = () => {
+    const random = Math.floor(10000 + Math.random() * 90000);
+    const id = `id:${random}`;
+
     storeDB
       .collection("learners")
-      .doc(String(listLength + 1))
+      .doc(id)
       .set({
         "First Name": First,
         "Last Name": Last,
         Email: Email,
         Score: Score,
+        id: id,
       })
       .then(() => {
         alert("successfully added new learner: " + First + " " + Last);
@@ -99,10 +102,6 @@ const AddUser = ({ listLength }) => {
       </form>
     </div>
   );
-};
-
-AddUser.propTypes = {
-  listLength: PropTypes.number,
 };
 
 export default AddUser;

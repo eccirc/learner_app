@@ -23,12 +23,12 @@ function App() {
       setisAdmin(false);
     }
   });
-
   useEffect(() => {
+    console.log("State Change");
     return () => {
       null;
     };
-  }, [Admin, data]);
+  }, [data, Admin]);
 
   return (
     <Router>
@@ -41,7 +41,7 @@ function App() {
               {error && <h1 className="text-2xl">error</h1>}
               {data && (
                 <Home
-                  title="Learners List: Average Score = "
+                  title="Learners List: "
                   learnerList={data}
                   isAdmin={isAdmin}
                 />
@@ -49,10 +49,10 @@ function App() {
             </Route>
             {data && (
               <Route path="/addnew">
-                <AddUser listLength={data.length} />
+                <AddUser />
               </Route>
             )}
-            <Route path="/profile/:name">
+            <Route path="/profile/:routeID">
               {data && <Profile details={data} />}
             </Route>
           </Switch>
